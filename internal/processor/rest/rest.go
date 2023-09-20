@@ -1,10 +1,10 @@
 package rest
 
 import (
-	"app/internal/manager/interfaces"
-	"app/internal/manager/interfaces/processor/rest"
-	"app/internal/processor/rest/handler"
-	"app/internal/processor/rest/middlewares"
+	"github.com/doxanocap/hitba-service-api/internal/manager/interfaces"
+	"github.com/doxanocap/hitba-service-api/internal/manager/interfaces/processor/rest"
+	"github.com/doxanocap/hitba-service-api/internal/processor/rest/handler"
+	"github.com/doxanocap/hitba-service-api/internal/processor/rest/middlewares"
 	"sync"
 )
 

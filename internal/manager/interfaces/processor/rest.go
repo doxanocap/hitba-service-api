@@ -1,7 +1,7 @@
 package processor
 
 import (
-	"app/internal/manager/interfaces/processor/rest"
+	"github.com/doxanocap/hitba-service-api/internal/manager/interfaces/processor/rest"
 )
 
 type IRESTProcessor interface {

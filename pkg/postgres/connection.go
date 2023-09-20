@@ -1,14 +1,13 @@
 package postgres
 
 import (
-	"app/internal/model"
-	"context"
 	"fmt"
+	"github.com/doxanocap/hitba-service-api/internal/model"
 	"github.com/doxanocap/pkg/lg"
-
-	"github.com/jackc/pgx/v4/pgxpool"
 	_ "github.com/jmoiron/sqlx"
 	_ "github.com/lib/pq"
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
 )
 
 const (
@@ -23,22 +22,21 @@ func getDSN(cfg model.Psql) string {
 		cfg.PsqlHost, cfg.PsqlPort, cfg.PsqlUser, cfg.PsqlPassword, cfg.PsqlDatabase, cfg.PsqlSSL)
 }
 
-func InitConnection(cfg *model.Config) *pgxpool.Pool {
-	ctx := context.Background()
-	connConfig, err := pgxpool.ParseConfig(getDSN(cfg.Psql))
+func InitConnection(cfg *model.Config) *gorm.DB {
+	db, err := gorm.Open(postgres.Open(getDSN(cfg.Psql)), &gorm.Config{})
 	if err != nil {
-		lg.Fatalf("failed to parse config -> %v", err)
+		lg.Fatalf("psql: failed to connect -> %v", err)
 	}
 
-	conn, err := pgxpool.ConnectConfig(ctx, connConfig)
+	connection, err := db.DB()
 	if err != nil {
-		lg.Fatalf("failed to connect -> %v", err)
+		lg.Fatalf("psql: failed to set connection -> %v", err)
 	}
 
-	err = conn.Ping(ctx)
+	err = connection.Ping()
 	if err != nil {
-		lg.Fatalf("failed to ping -> %v", err)
+		lg.Fatalf("psql: failed to ping -> %v", err)
 	}
 
-	return conn
+	return db
 }

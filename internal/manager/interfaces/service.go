@@ -1,28 +1,19 @@
 package interfaces
 
 import (
-	"app/internal/model"
 	"context"
+	"github.com/doxanocap/hitba-service-api/internal/model"
 )
 
 type IService interface {
-	Auth() IAuthService
+	Services() IServicesService
 	User() IUserService
-	Storage() IStorageService
 }
 
-type IAuthService interface {
-	NewPairTokens(user model.UserDTO) (result *model.Tokens, err error)
+// ToDo: rename Services
+type IServicesService interface {
+	GetAll(ctx context.Context) []model.Service
 }
 
 type IUserService interface {
-	Create(ctx context.Context, body model.SignUp) (result *model.AuthResponse, err error)
-	SaveToken(ctx context.Context, ID int64, refreshToken string) (err error)
-	Authenticate(ctx context.Context, body model.SignIn) (result *model.AuthResponse, err error)
-	Refresh(ctx context.Context, refreshToken string) (result *model.Tokens, err error)
-	Logout(ctx context.Context, refreshToken string) (err error)
-}
-
-type IStorageService interface {
-	SaveFile(ctx context.Context, obj *model.HandlePicture) (string, error)
 }

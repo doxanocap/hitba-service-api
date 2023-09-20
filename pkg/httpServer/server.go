@@ -1,9 +1,9 @@
 package httpServer
 
 import (
-	"app/internal/model"
 	"context"
 	"fmt"
+	"github.com/doxanocap/hitba-service-api/internal/model"
 	"net/http"
 	"time"
 )

@@ -1,14 +1,16 @@
 package handler
 
 import (
-	"app/internal/manager/interfaces"
-	"github.com/gin-contrib/cors"
+	"github.com/doxanocap/hitba-service-api/internal/manager/interfaces"
+	"github.com/doxanocap/hitba-service-api/internal/processor/rest/utils"
 	"github.com/gin-gonic/gin"
-	"net/http"
 	"sync"
 )
 
 type Handler struct {
+	services *ServicesController
+	user     *UserController
+
 	engine       *gin.Engine
 	engineRunner sync.Once
 	manager      interfaces.IManager
@@ -16,7 +18,9 @@ type Handler struct {
 
 func InitHandler(manager interfaces.IManager) *Handler {
 	newHandler := &Handler{
-		manager: manager,
+		manager:  manager,
+		services: InitServicesController(manager),
+		user:     InitUserController(manager),
 	}
 
 	newHandler.InitRoutes()
@@ -35,43 +39,7 @@ func (h *Handler) InitRoutes() {
 
 func (h *Handler) Engine() *gin.Engine {
 	h.engineRunner.Do(func() {
-		h.engine = InitEngine(h.manager.Cfg().App.Environment)
+		h.engine = utils.InitEngine(h.manager.Cfg().App.Environment)
 	})
 	return h.engine
-}
-
-func InitEngine(env string) *gin.Engine {
-	setGinMode(env)
-
-	router := gin.New()
-	router.Use(gin.Recovery())
-	router.RedirectTrailingSlash = true
-	corsConfig := cors.Config{
-		AllowOriginFunc: func(origin string) bool { return true },
-		AllowMethods: []string{
-			http.MethodGet,
-			http.MethodHead,
-			http.MethodPost,
-			http.MethodPut,
-			http.MethodPatch,
-			http.MethodDelete,
-			http.MethodConnect,
-			http.MethodOptions,
-			http.MethodTrace,
-		},
-		AllowHeaders:     []string{"*"},
-		AllowCredentials: true,
-		MaxAge:           604800,
-	}
-	router.Use(cors.New(corsConfig))
-
-	return router
-}
-
-func setGinMode(env string) {
-	if env == "production" {
-		gin.SetMode(gin.ReleaseMode)
-		return
-	}
-	gin.SetMode(gin.DebugMode)
 }

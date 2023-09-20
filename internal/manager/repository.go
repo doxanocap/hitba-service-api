@@ -1,49 +1,49 @@
 package manager
 
 import (
-	"app/internal/manager/interfaces"
-	"app/internal/repository"
-	"app/pkg/logger"
-	"github.com/jackc/pgx/v4/pgxpool"
+	"github.com/doxanocap/hitba-service-api/internal/manager/interfaces"
+	"github.com/doxanocap/hitba-service-api/internal/repository"
+	"github.com/doxanocap/hitba-service-api/pkg/logger"
+	"gorm.io/gorm"
 	"sync"
 )
 
 type RepositoryManager struct {
-	pool *pgxpool.Pool
+	db *gorm.DB
 
-	user       interfaces.IUserRepository
-	userRunner sync.Once
+	services       interfaces.IServicesRepository
+	servicesRunner sync.Once
 
-	userParams       interfaces.IUserParamsRepository
-	userParamsRunner sync.Once
+	serviceTariffs       interfaces.IServiceTariffsRepository
+	serviceTariffsRunner sync.Once
 
-	storage       interfaces.IStorageRepository
-	storageRunner sync.Once
+	purchasedServices       interfaces.IPurchasedServicesRepository
+	purchasedServicesRunner sync.Once
 }
 
-func InitRepositoryManager(pool *pgxpool.Pool) *RepositoryManager {
+func InitRepositoryManager(db *gorm.DB) *RepositoryManager {
 	return &RepositoryManager{
-		pool: pool,
+		db: db,
 	}
 }
 
-func (r *RepositoryManager) User() interfaces.IUserRepository {
-	r.userRunner.Do(func() {
-		r.user = repository.InitUserRepository(r.pool, logger.Log.Named("[REPOSITORY][USER]"))
+func (rm *RepositoryManager) Services() interfaces.IServicesRepository {
+	rm.servicesRunner.Do(func() {
+		rm.services = repository.InitServicesRepository(rm.db, logger.Log.Named("[REPOSITORY][SERVICES]"))
 	})
-	return r.user
+	return rm.services
 }
 
-func (r *RepositoryManager) UserParams() interfaces.IUserParamsRepository {
-	r.userParamsRunner.Do(func() {
-		r.userParams = repository.InitUserParamsRepository(r.pool, logger.Log.Named("[REPOSITORY][USER_PARAMS]"))
+func (rm *RepositoryManager) ServiceTariffs() interfaces.IServiceTariffsRepository {
+	rm.serviceTariffsRunner.Do(func() {
+		rm.serviceTariffs = repository.InitServiceTariffsRepository(rm.db, logger.Log.Named("[REPOSITORY][SERVICE_TARIFFS]"))
 	})
-	return r.userParams
+	return rm.serviceTariffs
 }
 
-func (r *RepositoryManager) Storage() interfaces.IStorageRepository {
-	r.storageRunner.Do(func() {
-		r.storage = repository.InitStorageRepository(r.pool, logger.Log.Named("[REPOSITORY][STORAGE]"))
+func (rm *RepositoryManager) PurchasedServices() interfaces.IPurchasedServicesRepository {
+	rm.purchasedServicesRunner.Do(func() {
+		rm.purchasedServices = repository.InitPurchasedServicesRepository(rm.db, logger.Log.Named("[REPOSITORY][PURCHASED_SERVICES]"))
 	})
-	return r.storage
+	return rm.purchasedServices
 }

@@ -1,15 +1,11 @@
 package model
 
 type Config struct {
-	LogJSON   bool   `env:"LOG_JSON"`
-	RabbitDSN string `env:"RABBIT_DSN"`
+	LogJSON bool `env:"LOG_JSON"`
 
 	Psql
 	App
-	Token
 	Redis
-	AWS
-	SMTP
 }
 
 type App struct {
@@ -18,11 +14,6 @@ type App struct {
 
 	ServerIP   string `env:"SERVER_IP"`
 	ServerPort string `env:"SERVER_PORT"`
-}
-
-type Token struct {
-	RefreshSecret string `env:"REFRESH_TOKEN_SECRET"`
-	AccessSecret  string `env:"ACCESS_TOKEN_SECRET"`
 }
 
 type Psql struct {
@@ -39,23 +30,4 @@ type Redis struct {
 	Host     string `env:"REDIS_HOST"`
 	Password string `env:"REDIS_PASSWORD"`
 	Database int    `env:"REDIS_DATABASE"`
-}
-
-type AWS struct {
-	S3
-}
-
-type S3 struct {
-	AccessKey   string `env:"S3_ACCESS_KEY"`
-	SecretKey   string `env:"S3_SECRET_KEY"`
-	EndpointUrl string `env:"S3_ENDPOINT_URL"`
-	BucketName  string `env:"S3_BUCKET_NAME"`
-	UseSSL      bool   `env:"S3_USE_SSL"`
-}
-
-type SMTP struct {
-	Email    string `env:"SMTP_EMAIL"`
-	Password string `env:"SMTP_PASSWORD"`
-	Host     string `env:"SMTP_HOST"`
-	Port     string `env:"SMTP_PORT"`
 }

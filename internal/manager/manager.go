@@ -1,23 +1,18 @@
 package manager
 
 import (
-	"app/internal/manager/interfaces"
-	"app/internal/manager/interfaces/processor"
-	"app/internal/model"
-	"app/pkg/redis"
-	"app/pkg/smtp"
-	"github.com/jackc/pgx/v4/pgxpool"
+	"github.com/doxanocap/hitba-service-api/internal/manager/interfaces"
+	"github.com/doxanocap/hitba-service-api/internal/model"
+	"github.com/doxanocap/hitba-service-api/pkg/redis"
 	_ "github.com/jackc/pgx/v4/pgxpool"
+	"gorm.io/gorm"
 	"sync"
 )
 
 type Manager struct {
-	cfg               *model.Config
-	pool              *pgxpool.Pool
-	cacheConn         *redis.Conn
-	storageProvider   processor.IStorageProvider
-	msgBrokerProvider processor.IMsgBrokerProvider
-	mailerProvider    processor.IMailerProvider
+	cfg       *model.Config
+	db        *gorm.DB
+	cacheConn *redis.Conn
 
 	service       interfaces.IService
 	serviceRunner sync.Once
@@ -41,7 +36,7 @@ func (m *Manager) Cfg() *model.Config {
 
 func (m *Manager) Repository() interfaces.IRepository {
 	m.repositoryRunner.Do(func() {
-		m.repository = InitRepositoryManager(m.pool)
+		m.repository = InitRepositoryManager(m.db)
 	})
 	return m.repository
 }
@@ -55,26 +50,15 @@ func (m *Manager) Service() interfaces.IService {
 
 func (m *Manager) Processor() interfaces.IProcessor {
 	m.processorRunner.Do(func() {
-		m.processor = InitProcessor(m, m.storageProvider)
+		m.processor = InitProcessor(m)
 	})
 	return m.processor
 }
 
-func (m *Manager) SetPool(pool *pgxpool.Pool) {
-	m.pool = pool
-}
-
-func (m *Manager) SetStorageProvider(storageProvider processor.IStorageProvider) {
-	m.storageProvider = storageProvider
-}
-
-func (m *Manager) SetMsgBroker(msgBrokerProvider processor.IMsgBrokerProvider) {
-	m.msgBrokerProvider = msgBrokerProvider
+func (m *Manager) SetCoreDB(db *gorm.DB) {
+	m.db = db
 }
 
 func (m *Manager) SetCacheConnection(cacheConn *redis.Conn) {
 	m.cacheConn = cacheConn
-}
-func (m *Manager) SetMailer(mailer *smtp.SMTP) {
-	m.mailerProvider = mailer
 }

@@ -1,43 +1,39 @@
 package cmd
 
 import (
-	"app/internal/manager"
-	"app/pkg/aws"
-	"app/pkg/httpServer"
-	"app/pkg/rabbitmq"
-	"app/pkg/redis"
-	"app/pkg/smtp"
 	"context"
+	"github.com/doxanocap/hitba-service-api/internal/manager"
+	"github.com/doxanocap/hitba-service-api/pkg/httpServer"
+	"github.com/doxanocap/hitba-service-api/pkg/redis"
+	"github.com/doxanocap/pkg/errs"
 	"github.com/doxanocap/pkg/lg"
-	"github.com/jackc/pgx/v4/pgxpool"
 	"go.uber.org/fx"
+	"gorm.io/gorm"
 )
 
 func SetupManager(
 	lc fx.Lifecycle,
-	pool *pgxpool.Pool,
-	mqClient *rabbitmq.MQClient,
+	db *gorm.DB,
 	redisConn *redis.Conn,
-	smtPConn *smtp.SMTP,
-	awsServices *aws.Services,
 	manager *manager.Manager,
 ) {
 	lc.Append(fx.Hook{
 		OnStart: func(ctx context.Context) error {
-			manager.SetPool(pool)
-			manager.SetMsgBroker(mqClient)
+			manager.SetCoreDB(db)
 			manager.SetCacheConnection(redisConn)
-			manager.SetMailer(smtPConn)
-			manager.SetStorageProvider(awsServices.S3)
 			return nil
 		},
 		OnStop: func(ctx context.Context) error {
-			pool.Close()
-			if err := mqClient.Ch.Close(); err != nil {
-				return err
+			connection, err := db.DB()
+			if err != nil {
+				return errs.Wrap("shutting down: gorm: ", err)
+			}
+			err = connection.Close()
+			if err != nil {
+				return errs.Wrap("shutting down: db-conn close: ", err)
 			}
 			if err := redisConn.Close(); err != nil {
-				return err
+				return errs.Wrap("shutting downs: redis: ", err)
 			}
 			return nil
 		},

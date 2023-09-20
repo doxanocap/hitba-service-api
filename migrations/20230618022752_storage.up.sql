@@ -1,5 +1,0 @@
-CREATE TABLE storage (
-    id SERIAL PRIMARY KEY,
-    key VARCHAR(256) NOT NULL,
-    format VARCHAR(128) NOT NULL
-);

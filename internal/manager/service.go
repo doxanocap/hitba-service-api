@@ -1,22 +1,19 @@
 package manager
 
 import (
-	"app/internal/manager/interfaces"
-	"app/internal/service"
+	"github.com/doxanocap/hitba-service-api/internal/manager/interfaces"
+	"github.com/doxanocap/hitba-service-api/internal/service"
 	"sync"
 )
 
 type ServiceManager struct {
 	manager interfaces.IManager
 
-	auth       interfaces.IAuthService
-	authRunner sync.Once
+	services       interfaces.IServicesService
+	servicesRunner sync.Once
 
 	user       interfaces.IUserService
 	userRunner sync.Once
-
-	storage       interfaces.IStorageService
-	storageRunner sync.Once
 }
 
 func InitServiceManager(manager interfaces.IManager) *ServiceManager {
@@ -25,11 +22,11 @@ func InitServiceManager(manager interfaces.IManager) *ServiceManager {
 	}
 }
 
-func (s *ServiceManager) Auth() interfaces.IAuthService {
-	s.authRunner.Do(func() {
-		s.auth = service.InitAuthService(s.manager)
+func (s *ServiceManager) Services() interfaces.IServicesService {
+	s.servicesRunner.Do(func() {
+		s.services = service.InitServicesService(s.manager)
 	})
-	return s.auth
+	return s.services
 }
 
 func (s *ServiceManager) User() interfaces.IUserService {
@@ -37,11 +34,4 @@ func (s *ServiceManager) User() interfaces.IUserService {
 		s.user = service.InitUserService(s.manager)
 	})
 	return s.user
-}
-
-func (s *ServiceManager) Storage() interfaces.IStorageService {
-	s.storageRunner.Do(func() {
-		s.storage = service.InitStorageService(s.manager)
-	})
-	return s.storage
 }

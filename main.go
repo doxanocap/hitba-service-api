@@ -1,18 +1,14 @@
 package main
 
 import (
-	"app/cmd"
-	"app/internal/config"
-	"app/internal/manager"
-	"app/pkg/aws"
-	"app/pkg/banner"
-	"app/pkg/httpServer"
-	"app/pkg/logger"
-	"app/pkg/postgres"
-	"app/pkg/rabbitmq"
-	"app/pkg/redis"
-	"app/pkg/smtp"
-	"github.com/doxanocap/pkg/lg"
+	"github.com/doxanocap/hitba-service-api/cmd"
+	"github.com/doxanocap/hitba-service-api/internal/config"
+	"github.com/doxanocap/hitba-service-api/internal/manager"
+	"github.com/doxanocap/hitba-service-api/pkg/banner"
+	"github.com/doxanocap/hitba-service-api/pkg/httpServer"
+	"github.com/doxanocap/hitba-service-api/pkg/logger"
+	"github.com/doxanocap/hitba-service-api/pkg/postgres"
+	"github.com/doxanocap/hitba-service-api/pkg/redis"
 	"go.uber.org/fx"
 )
 
@@ -23,10 +19,7 @@ func main() {
 			config.InitConfig,
 			logger.InitLogger,
 			postgres.InitConnection,
-			rabbitmq.InitConnection,
 			redis.InitConnection,
-			smtp.InitConnection,
-			aws.InitServices,
 			manager.InitManager,
 			httpServer.InitServer,
 		),
@@ -39,6 +32,6 @@ func main() {
 
 	app.Run()
 	if err := app.Err(); err != nil {
-		lg.Fatal(err)
+		logger.Log.Fatal(err.Error())
 	}
 }

@@ -1,8 +1,8 @@
 package redis
 
 import (
-	"app/internal/model"
 	"context"
+	"github.com/doxanocap/hitba-service-api/internal/model"
 	"github.com/doxanocap/pkg/lg"
 	"github.com/go-redis/redis/v8"
 	"time"
@@ -16,13 +16,12 @@ type Conn struct {
 func InitConnection(cfg *model.Config) *Conn {
 	ctx := context.Background()
 	client := redis.NewClient(&redis.Options{
-		Addr:     cfg.Redis.Host,
-		Password: cfg.Redis.Password,
-		DB:       cfg.Redis.Database,
+		Addr: cfg.Redis.Host,
+		DB:   cfg.Redis.Database,
 	})
 
 	if err := client.Ping(ctx).Err(); err != nil {
-		lg.Fatalf("redis connection: %v", err)
+		lg.Fatalf("redis connection: %s", err)
 	}
 
 	return &Conn{

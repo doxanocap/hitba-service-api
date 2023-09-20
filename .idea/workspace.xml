@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="23fdc24c-0931-465e-93c5-bc6bb06c0c28" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/internal/model/config.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/model/services.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/processor/rest/handler/routes_v1.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/processor/rest/handler/services.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/processor/rest/handler/user.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/processor/rest/utils/gin.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/repository/purchased_services.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/repository/service_tariffs.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/repository/services.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/root.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/root.go" afterDir="false" />
@@ -13,15 +20,59 @@
       <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/config/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/config/config.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/manager/interfaces/manager.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/manager/interfaces/manager.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/manager/interfaces/processor.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/manager/interfaces/processor.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/manager/interfaces/processor/mailer.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/manager/interfaces/processor/msgbroker.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/manager/interfaces/processor/rest.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/manager/interfaces/processor/rest.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/manager/interfaces/processor/storage.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/manager/interfaces/processor/ws.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/manager/interfaces/processor/ws/client.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/manager/interfaces/processor/ws/pool.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/manager/interfaces/repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/manager/interfaces/repository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/manager/interfaces/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/manager/interfaces/service.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/manager/manager.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/manager/manager.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/manager/processor.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/manager/processor.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/manager/repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/manager/repository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/manager/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/manager/service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/model/auth.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/model/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/model/config.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/model/models.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/model/response.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/model/storage.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/processor/mailer/mailer.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/processor/msgbroker/msgbroker.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/processor/rest/handler/auth.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/processor/rest/handler/handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/processor/rest/handler/handler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/processor/rest/handler/routes.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/processor/rest/handler/storage.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/processor/rest/handler/ws.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/processor/rest/middlewares/middlewares.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/processor/rest/middlewares/middlewares.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/processor/rest/rest.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/processor/rest/rest.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/processor/storage/storage.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/processor/ws/client.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/processor/ws/pool.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/processor/ws/ws.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repository/storage.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repository/user.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repository/userParams.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/service/auth.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/services.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/service/storage.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/service/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/user.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/aws/aws.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/aws/aws.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/20230618022752_storage.down.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/20230618022752_storage.up.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/20230624040149_user.down.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/20230624040149_user.up.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/aws/aws.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/aws/s3.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/banner/banner.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/banner/banner.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pkg/httpServer/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/httpServer/server.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pkg/logger/zap.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/logger/zap.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pkg/postgres/connection.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/postgres/connection.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/rabbitmq/rabbitmq.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/rabbitmq/rabbitmq.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/rabbitmq/consumer.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/rabbitmq/producer.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/rabbitmq/rabbitmq.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pkg/redis/redis.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/redis/redis.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/smtp/smtp.go" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +87,7 @@
       </list>
     </option>
   </component>
-  <component name="GOROOT" url="file://$PROJECT_DIR$/../../../../../../../../Program Files/Go" />
+  <component name="GOROOT" url="file://$PROJECT_DIR$/../../../../../../../../../Program Files/Go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -64,10 +115,10 @@
     &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.go.watchers.conflict.with.on.save.actions.check.performed&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
     &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/eldos/go/src/github.com/doxanocap/projects/go-template/deployment&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/eldos/go/src/github.com/doxanocap/work/Hitba.kz/hitba-service-api&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,

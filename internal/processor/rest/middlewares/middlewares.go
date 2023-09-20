@@ -1,8 +1,8 @@
 package middlewares
 
 import (
-	"app/internal/manager/interfaces"
-	"app/internal/manager/interfaces/processor/rest"
+	"github.com/doxanocap/hitba-service-api/internal/manager/interfaces"
+	"github.com/doxanocap/hitba-service-api/internal/manager/interfaces/processor/rest"
 )
 
 type Middlewares struct {

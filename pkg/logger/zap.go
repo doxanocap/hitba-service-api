@@ -1,8 +1,8 @@
 package logger
 
 import (
-	"app/internal/cns"
-	"app/internal/model"
+	"github.com/doxanocap/hitba-service-api/internal/cns"
+	"github.com/doxanocap/hitba-service-api/internal/model"
 	"os"
 )
 

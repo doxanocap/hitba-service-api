@@ -1,7 +1,7 @@
 package config
 
 import (
-	"app/internal/model"
+	"github.com/doxanocap/hitba-service-api/internal/model"
 	"github.com/doxanocap/pkg/env"
 	"github.com/doxanocap/pkg/lg"
 )
