@@ -10,6 +10,7 @@ type IRepository interface {
 }
 
 type IServicesRepository interface {
+	Create(ctx context.Context, service model.Service) error
 	GetAll(ctx context.Context) []model.Service
 }
 

@@ -16,6 +16,10 @@ func InitServicesController(manager interfaces.IManager) *ServicesController {
 	}
 }
 
+func (sc *ServicesController) Create(ctx *gin.Context) {
+
+}
+
 func (sc *ServicesController) GetAll(ctx *gin.Context) {
 	result := sc.manager.Service().Services().GetAll(ctx)
 	//if err != nil {
