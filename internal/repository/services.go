@@ -2,57 +2,79 @@ package repository
 
 import (
 	"context"
-	"errors"
 	"github.com/doxanocap/hitba-service-api/internal/model"
 	"github.com/doxanocap/pkg/errs"
-	"go.uber.org/zap"
 	"gorm.io/gorm"
+	"time"
 )
 
 type ServicesRepository struct {
-	db  *gorm.DB
-	log *zap.Logger
+	db *gorm.DB
 }
 
-func InitServicesRepository(db *gorm.DB, log *zap.Logger) *ServicesRepository {
+func InitServicesRepository(db *gorm.DB) *ServicesRepository {
 	return &ServicesRepository{
-		db:  db,
-		log: log,
+		db: db,
 	}
 }
 
 func (repo *ServicesRepository) Create(ctx context.Context, service model.Service) error {
+	service.UpdatedAt = time.Now()
 	err := repo.db.WithContext(ctx).
-		Model(&model.Service{}).
-		Create(service).Error
-	return errs.Wrap("servicesRepo.Create", err)
+		Create(&service).
+		Error
+
+	if err != nil {
+		return errs.Wrap("repo_services.Create", err)
+	}
+	return nil
 }
 
 func (repo *ServicesRepository) GetAll(ctx context.Context) ([]model.Service, error) {
 	var services []model.Service
 
 	err := repo.db.WithContext(ctx).
-		Model(&model.Service{}).
-		Select("*").
+		Raw("SELECT * FROM services").
 		Scan(&services).
 		Error
-	return services, err
+	if err != nil {
+		return nil, errs.Wrap("repo_services.GetAll", err)
+	}
+	return services, nil
 }
 
-func (repo *ServicesRepository) FindByName(ctx context.Context, nameKey string) (*model.Service, error) {
-	var service model.Service
+func (repo *ServicesRepository) GetByName(ctx context.Context, nameKey string) (*model.Service, error) {
+	service := &model.Service{}
 	err := repo.db.WithContext(ctx).
-		Model(&model.Service{}).
-		Where("name_key = ?", nameKey).
-		First(&service).
+		Raw("SELECT * FROM services WHERE name_key = ? Limit 1", nameKey).
+		Scan(service).
 		Error
 
 	if err != nil {
-		if errors.Is(err, gorm.ErrRecordNotFound) {
-			return nil, err
-		}
-		return nil, errs.Wrap("servicesRepo.FindByName: ", err)
+		return nil, errs.Wrap("repo_services.GetByName", err)
 	}
 
-	return &service, nil
+	if service.ID == 0 {
+		return nil, nil
+	}
+
+	return service, nil
+}
+
+func (repo *ServicesRepository) GetByID(ctx context.Context, ID int64) (*model.Service, error) {
+	service := &model.Service{}
+	err := repo.db.WithContext(ctx).
+		Raw("SELECT * FROM services WHERE id = ?", ID).
+		Scan(service).
+		Error
+
+	if err != nil {
+		return nil, errs.Wrap("repo_services.GetByID: ", err)
+	}
+
+	if service.ID == 0 {
+		return nil, nil
+	}
+
+	return service, nil
 }

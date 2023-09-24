@@ -6,9 +6,9 @@ import (
 	"github.com/doxanocap/hitba-service-api/internal/manager"
 	"github.com/doxanocap/hitba-service-api/pkg/banner"
 	"github.com/doxanocap/hitba-service-api/pkg/httpServer"
-	"github.com/doxanocap/hitba-service-api/pkg/logger"
 	"github.com/doxanocap/hitba-service-api/pkg/postgres"
 	"github.com/doxanocap/hitba-service-api/pkg/redis"
+	"github.com/doxanocap/pkg/lg"
 	"go.uber.org/fx"
 )
 
@@ -17,7 +17,6 @@ func main() {
 		fx.NopLogger,
 		fx.Provide(
 			config.InitConfig,
-			logger.InitLogger,
 			postgres.InitConnection,
 			redis.InitConnection,
 			manager.InitManager,
@@ -32,6 +31,6 @@ func main() {
 
 	app.Run()
 	if err := app.Err(); err != nil {
-		logger.Log.Fatal(err.Error())
+		lg.Fatal(err)
 	}
 }

@@ -7,6 +7,7 @@ import (
 
 type IService interface {
 	Services() IServicesService
+	ServiceTariffs() IServiceTariffsService
 	User() IUserService
 }
 
@@ -14,6 +15,10 @@ type IService interface {
 type IServicesService interface {
 	Create(ctx context.Context, service model.Service) error
 	GetAll(ctx context.Context) ([]model.Service, error)
+}
+
+type IServiceTariffsService interface {
+	Create(ctx context.Context, tariff model.ServiceTariff) error
 }
 
 type IUserService interface {

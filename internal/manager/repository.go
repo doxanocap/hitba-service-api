@@ -3,7 +3,6 @@ package manager
 import (
 	"github.com/doxanocap/hitba-service-api/internal/manager/interfaces"
 	"github.com/doxanocap/hitba-service-api/internal/repository"
-	"github.com/doxanocap/hitba-service-api/pkg/logger"
 	"gorm.io/gorm"
 	"sync"
 )
@@ -29,21 +28,21 @@ func InitRepositoryManager(db *gorm.DB) *RepositoryManager {
 
 func (rm *RepositoryManager) Services() interfaces.IServicesRepository {
 	rm.servicesRunner.Do(func() {
-		rm.services = repository.InitServicesRepository(rm.db, logger.Log.Named("[REPOSITORY][SERVICES]"))
+		rm.services = repository.InitServicesRepository(rm.db)
 	})
 	return rm.services
 }
 
 func (rm *RepositoryManager) ServiceTariffs() interfaces.IServiceTariffsRepository {
 	rm.serviceTariffsRunner.Do(func() {
-		rm.serviceTariffs = repository.InitServiceTariffsRepository(rm.db, logger.Log.Named("[REPOSITORY][SERVICE_TARIFFS]"))
+		rm.serviceTariffs = repository.InitServiceTariffsRepository(rm.db)
 	})
 	return rm.serviceTariffs
 }
 
 func (rm *RepositoryManager) PurchasedServices() interfaces.IPurchasedServicesRepository {
 	rm.purchasedServicesRunner.Do(func() {
-		rm.purchasedServices = repository.InitPurchasedServicesRepository(rm.db, logger.Log.Named("[REPOSITORY][PURCHASED_SERVICES]"))
+		rm.purchasedServices = repository.InitPurchasedServicesRepository(rm.db)
 	})
 	return rm.purchasedServices
 }

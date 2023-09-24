@@ -12,6 +12,9 @@ type ServiceManager struct {
 	services       interfaces.IServicesService
 	servicesRunner sync.Once
 
+	serviceTariffs       interfaces.IServiceTariffsService
+	serviceTariffsRunner sync.Once
+
 	user       interfaces.IUserService
 	userRunner sync.Once
 }
@@ -27,6 +30,13 @@ func (s *ServiceManager) Services() interfaces.IServicesService {
 		s.services = service.InitServicesService(s.manager)
 	})
 	return s.services
+}
+
+func (s *ServiceManager) ServiceTariffs() interfaces.IServiceTariffsService {
+	s.serviceTariffsRunner.Do(func() {
+		s.serviceTariffs = service.InitServicesTariffsService(s.manager)
+	})
+	return s.serviceTariffs
 }
 
 func (s *ServiceManager) User() interfaces.IUserService {

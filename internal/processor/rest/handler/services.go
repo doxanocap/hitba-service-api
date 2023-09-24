@@ -1,11 +1,10 @@
 package handler
 
 import (
-	"fmt"
 	"github.com/doxanocap/hitba-service-api/internal/manager/interfaces"
 	"github.com/doxanocap/hitba-service-api/internal/model"
-	"github.com/doxanocap/hitba-service-api/pkg/logger"
 	"github.com/doxanocap/pkg/errs"
+	"github.com/doxanocap/pkg/lg"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -32,7 +31,7 @@ func (sc *ServicesController) Create(ctx *gin.Context) {
 
 	err := sc.manager.Service().Services().Create(ctx, service)
 	if err != nil {
-		logger.Log.Error(fmt.Sprintf("servicesController.Create: %v", err))
+		lg.Errorf("services_ctl.Create: %v", err)
 
 		code := errs.UnmarshalCode(err)
 		if code == http.StatusConflict {

@@ -8,8 +8,9 @@ import (
 )
 
 type Handler struct {
-	services *ServicesController
-	user     *UserController
+	services       *ServicesController
+	serviceTariffs *ServiceTariffsController
+	user           *UserController
 
 	engine       *gin.Engine
 	engineRunner sync.Once
@@ -18,9 +19,10 @@ type Handler struct {
 
 func InitHandler(manager interfaces.IManager) *Handler {
 	newHandler := &Handler{
-		manager:  manager,
-		services: InitServicesController(manager),
-		user:     InitUserController(manager),
+		manager:        manager,
+		services:       InitServicesController(manager),
+		serviceTariffs: InitServiceTariffsController(manager),
+		user:           InitUserController(manager),
 	}
 
 	newHandler.InitRoutes()

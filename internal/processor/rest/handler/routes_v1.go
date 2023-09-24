@@ -10,6 +10,11 @@ func (h *Handler) AddRoutesV1() {
 		services.GET("", h.services.GetAll)
 	}
 
+	serviceTariffs := v1.Group("tariffs")
+	{
+		serviceTariffs.POST("", h.serviceTariffs.Create)
+	}
+
 	users := v1.Group("users")
 	{
 		users.POST("/:user_id/buy", h.user.PurchaseServiceByID)
