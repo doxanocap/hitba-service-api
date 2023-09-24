@@ -12,7 +12,8 @@ type IService interface {
 
 // ToDo: rename Services
 type IServicesService interface {
-	GetAll(ctx context.Context) []model.Service
+	Create(ctx context.Context, service model.Service) error
+	GetAll(ctx context.Context) ([]model.Service, error)
 }
 
 type IUserService interface {

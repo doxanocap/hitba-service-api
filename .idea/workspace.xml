@@ -5,13 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="23fdc24c-0931-465e-93c5-bc6bb06c0c28" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/internal/model/errors.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/go-template.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/hitba-service-api.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/cns/checker.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/consts/checker.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/cns/cns.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/consts/cns.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/cns/errs/checks.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/cns/errs/errors.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/cns/errs/msg.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/manager/interfaces/repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/manager/interfaces/repository.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/model/services.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/model/services.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/processor/rest/handler/routes_v1.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/processor/rest/handler/routes_v1.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/manager/interfaces/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/manager/interfaces/service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/model/response.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/model/response.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/processor/rest/handler/services.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/processor/rest/handler/services.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/repository/services.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repository/services.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/service/services.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/services.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/logger/zap.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/logger/zap.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +37,7 @@
       </list>
     </option>
   </component>
-  <component name="GOROOT" url="file://$PROJECT_DIR$/../../../../../../../../../Program Files/Go" />
+  <component name="GOROOT" url="file://$PROJECT_DIR$/../../../../../../../Program Files/Go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -57,13 +68,13 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
     &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/eldos/go/src/github.com/doxanocap/work/Hitba.kz/hitba-service-api&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/eldos/go/src/github.com/doxanocap/hitba-service-api&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;DatabaseDriversLRU&quot;: [
@@ -85,7 +96,7 @@
   </component>
   <component name="RunManager">
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
-      <module name="go-template" />
+      <module name="hitba-service-api" />
       <working_directory value="$PROJECT_DIR$" />
       <go_parameters value="-i" />
       <kind value="PACKAGE" />
@@ -95,7 +106,7 @@
       <method v="2" />
     </configuration>
     <configuration name="go build app" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="go-template" />
+      <module name="hitba-service-api" />
       <working_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
       <package value="app" />
@@ -104,7 +115,7 @@
       <method v="2" />
     </configuration>
     <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
-      <module name="go-template" />
+      <module name="hitba-service-api" />
       <working_directory value="$PROJECT_DIR$" />
       <go_parameters value="-i" />
       <kind value="DIRECTORY" />

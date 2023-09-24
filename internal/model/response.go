@@ -7,8 +7,3 @@ type AuthResponseModel struct {
 	RefreshToken string `json:"RefreshToken"`
 	User         User   `json:"User"`
 }
-
-type Error struct {
-	Status  int    `json:"Status"`
-	Message string `json:"Message"`
-}

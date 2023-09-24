@@ -2,6 +2,7 @@ package service
 
 import (
 	"context"
+	"github.com/doxanocap/hitba-service-api/internal/consts"
 	"github.com/doxanocap/hitba-service-api/internal/manager/interfaces"
 	"github.com/doxanocap/hitba-service-api/internal/model"
 	"github.com/doxanocap/pkg/errs"
@@ -18,13 +19,22 @@ func InitServicesService(manager interfaces.IManager) *ServicesService {
 }
 
 func (s *ServicesService) Create(ctx context.Context, service model.Service) error {
-	err := s.manager.Repository().Services().Create(ctx, service)
+	result, err := s.manager.Repository().Services().FindByName(ctx, service.NameKey)
 	if err != nil {
-		return errs.Wrap("create service", err)
+		return errs.Wrap("idempotency check", err)
+	}
+
+	if result != nil {
+		return consts.ErrSuchServiceAlreadyExist
+	}
+
+	err = s.manager.Repository().Services().Create(ctx, service)
+	if err != nil {
+		return errs.Wrap("create new service", err)
 	}
 	return nil
 }
 
-func (s *ServicesService) GetAll(ctx context.Context) []model.Service {
+func (s *ServicesService) GetAll(ctx context.Context) ([]model.Service, error) {
 	return s.manager.Repository().Services().GetAll(ctx)
 }

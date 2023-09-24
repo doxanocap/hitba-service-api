@@ -11,7 +11,8 @@ type IRepository interface {
 
 type IServicesRepository interface {
 	Create(ctx context.Context, service model.Service) error
-	GetAll(ctx context.Context) []model.Service
+	FindByName(ctx context.Context, nameKey string) (*model.Service, error)
+	GetAll(ctx context.Context) ([]model.Service, error)
 }
 
 type IServiceTariffsRepository interface {
