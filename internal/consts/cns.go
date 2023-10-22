@@ -7,10 +7,24 @@ const (
 	AppProductionEnv  = "production"
 )
 
+// App constants
 const (
-	NilString = ""
-	Space     = ""
-	NewLine   = "\n"
+	// DateFormat default date format in the domain of Tasbih-API
+	// to handle daily counter via this format
+	DateFormat = "2006-01-02"
+	// SingleSessionDuration when counting has started, all counted values
+	// during this session time will be recorded as one session
+	SingleSessionDuration = time.Hour
+
+	// TokenMaxAge param for tokens time to live
+	TokenMaxAge = 30 * 24 * 60 * 60 * 1000
+	TokenPath   = "/"
+
+	// AuthPrefix default
+	AuthPrefix = "Bearer "
+
+	MailingAddress = "mailing_address"
+	MailSentTo     = "mail_sent_to"
 )
 
 var (
@@ -25,51 +39,15 @@ const (
 	PictureFormatJPG  = "jpg"
 )
 
+// Types
 const (
-	TokenMaxAge = 30 * 24 * 60 * 60 * 1000
-	TokenPath   = "/"
+	// NilString default nil value string across domain of the project
+	NilString = ""
+	// NilInt default nil value int across domain of the project
+	NilInt = 0
 )
 
-// Postgres
-const (
-	UserTable         = "user"
-	UserTableID       = "id"
-	UserTableUUID     = "uuid"
-	EmailColumn       = "email"
-	UsernameColumn    = "username"
-	PhoneNumberColumn = "phone_number"
-	PasswordColumn    = "password"
-
-	StorageTable   = "storage"
-	StorageTableID = "id"
-	KeyColumn      = "key"
-	FormatColumn   = "format"
-
-	UserParamsTable    = "user_params"
-	UserParamsTableID  = "token_id"
-	RefreshTokenColumn = "refresh_token"
-	UpdatedAtColumn    = "updated_at"
-	CreatedAtColumn    = "create_at"
+// NilByte default nil value []byte across domain of the project
+var (
+	NilByte []byte
 )
-
-// Mailer
-const (
-	MailingAddress = "mailing_address"
-	MailSentTo     = "mail_sent_to"
-)
-
-// Storage
-const (
-	StorageFileName = "storage_filename"
-	StorageFileSize = "storage_filesize"
-)
-
-// Websocket
-const (
-	WebsocketWriteWait      = 10 * time.Second
-	WebsocketPongWait       = 60 * time.Second
-	WebsocketPingPeriod     = (WebsocketPongWait * 9) / 10
-	WebsocketMaxMessageSize = 2056
-)
-
-var ()

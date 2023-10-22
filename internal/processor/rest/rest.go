@@ -2,7 +2,7 @@ package rest
 
 import (
 	"github.com/doxanocap/hitba-service-api/internal/manager/interfaces"
-	"github.com/doxanocap/hitba-service-api/internal/manager/interfaces/processor/rest"
+	"github.com/doxanocap/hitba-service-api/internal/manager/interfaces/processor"
 	"github.com/doxanocap/hitba-service-api/internal/processor/rest/handler"
 	"github.com/doxanocap/hitba-service-api/internal/processor/rest/middlewares"
 	"sync"
@@ -11,10 +11,10 @@ import (
 type REST struct {
 	manager interfaces.IManager
 
-	handler       rest.IHandlerManager
+	handler       processor.IHandlerManager
 	handlerRunner sync.Once
 
-	middlewares       rest.IMiddlewareManager
+	middlewares       processor.IMiddlewareManager
 	middlewaresRunner sync.Once
 }
 
@@ -24,14 +24,14 @@ func Init(manager interfaces.IManager) *REST {
 	}
 }
 
-func (r *REST) Handler() rest.IHandlerManager {
+func (r *REST) Handler() processor.IHandlerManager {
 	r.handlerRunner.Do(func() {
 		r.handler = handler.InitHandler(r.manager)
 	})
 	return r.handler
 }
 
-func (r *REST) Middlewares() rest.IMiddlewareManager {
+func (r *REST) Middlewares() processor.IMiddlewareManager {
 	r.middlewaresRunner.Do(func() {
 		r.middlewares = middlewares.InitMiddlewares(r.manager)
 	})

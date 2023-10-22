@@ -2,15 +2,16 @@ package handler
 
 import (
 	"github.com/doxanocap/hitba-service-api/internal/manager/interfaces"
-	"github.com/doxanocap/hitba-service-api/internal/processor/rest/utils"
+	"github.com/doxanocap/hitba-service-api/internal/processor/rest/controllers"
+	gin2 "github.com/doxanocap/hitba-service-api/pkg/gin"
 	"github.com/gin-gonic/gin"
 	"sync"
 )
 
 type Handler struct {
-	services       *ServicesController
-	serviceTariffs *ServiceTariffsController
-	user           *UserController
+	services       *controllers.ServicesController
+	serviceTariffs *controllers.ServiceTariffsController
+	user           *controllers.UserController
 
 	engine       *gin.Engine
 	engineRunner sync.Once
@@ -20,9 +21,9 @@ type Handler struct {
 func InitHandler(manager interfaces.IManager) *Handler {
 	newHandler := &Handler{
 		manager:        manager,
-		services:       InitServicesController(manager),
-		serviceTariffs: InitServiceTariffsController(manager),
-		user:           InitUserController(manager),
+		services:       controllers.InitServicesController(manager),
+		serviceTariffs: controllers.InitServiceTariffsController(manager),
+		user:           controllers.InitUserController(manager),
 	}
 
 	newHandler.InitRoutes()
@@ -41,7 +42,7 @@ func (h *Handler) InitRoutes() {
 
 func (h *Handler) Engine() *gin.Engine {
 	h.engineRunner.Do(func() {
-		h.engine = utils.InitEngine(h.manager.Cfg().App.Environment)
+		h.engine = gin2.InitEngine(h.manager.Cfg().App.Environment)
 	})
 	return h.engine
 }

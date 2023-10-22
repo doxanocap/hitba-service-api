@@ -34,6 +34,27 @@ func (s *ServicesService) Create(ctx context.Context, service model.Service) err
 	return nil
 }
 
+func (s *ServicesService) CreateTariff(ctx context.Context, tariff model.ServiceTariff) error {
+	result, err := s.manager.Repository().Services().GetByID(ctx, tariff.ServiceID)
+	if err != nil {
+		return errs.Wrap("check service with such id exist", err)
+	}
+
+	if result == nil {
+		return model.ErrServiceIdNotFound
+	}
+
+	err = s.manager.Repository().ServiceTariffs().Create(ctx, tariff)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *ServicesService) GetAllServices(ctx context.Context) ([]model.ServiceInfo, error) {
+	return s.manager.Repository().ServiceTariffs().GetAllServices(ctx)
+}
+
 func (s *ServicesService) GetAll(ctx context.Context) ([]model.Service, error) {
 	return s.manager.Repository().Services().GetAll(ctx)
 }

@@ -5,33 +5,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384b508f-c7cf-43e6-b025-528141bbfb4c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/internal/processor/rest/handler/service_tarrifs.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/service/service_tariffs.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/hitba-service-api.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/hitba-service-api.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/model/payment.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/processor/api/billing.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/custom/context.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/logger/zap.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/consts/cns.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/consts/cns.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/manager/interfaces/manager.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/manager/interfaces/manager.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/manager/interfaces/processor.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/manager/interfaces/processor.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/manager/interfaces/processor/rest.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/manager/interfaces/processor/rest/hanlder.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/manager/interfaces/processor/hanlder.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/manager/interfaces/processor/rest/middleware.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/manager/interfaces/processor/middleware.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/manager/interfaces/repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/manager/interfaces/repository.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/manager/interfaces/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/manager/interfaces/service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/manager/repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/manager/repository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/manager/manager.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/manager/manager.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/manager/processor.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/manager/processor.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/manager/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/manager/service.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/model/errors.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/model/errors.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/model/services.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/model/services.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/processor/rest/handler/handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/processor/rest/handler/handler.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/processor/rest/handler/routes_v1.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/processor/rest/handler/routes_v1.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/processor/rest/handler/services.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/processor/rest/handler/services.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/processor/rest/handler/service_tarrifs.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/processor/rest/handler/services.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/processor/rest/controllers/services.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/processor/rest/handler/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/processor/rest/controllers/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/processor/rest/middlewares/middlewares.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/processor/rest/middlewares/middlewares.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/processor/rest/rest.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/processor/rest/rest.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/processor/rest/utils/gin.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/custom/gin.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/repository/purchased_services.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repository/purchased_services.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/repository/service_tariffs.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repository/service_tariffs.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/repository/services.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repository/services.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/service/service_tariffs.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/service/services.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/services.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/20230924071858_init.down.sql" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/20230924071858_init.down.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/20230924071858_init.up.sql" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/20230924071858_init.up.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/logger/zap.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/service/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/user.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,9 +62,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2VqG5uZR2zEEHCi7yWpGuTF7Zab" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -73,7 +83,7 @@
     "git-widget-placeholder": "main",
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "C:/Users/eldos/go/src/github.com/doxanocap/work/Hitba.kz/hitba-service-api",
+    "last_opened_file_path": "C:/Users/eldos/go/src/github.com/doxanocap/projects/tasbih/tasbih-api",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm"
@@ -86,9 +96,33 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\eldos\go\src\github.com\doxanocap\work\hitba\hitba-service-api\internal\manager\interfaces\processor" />
+      <recent name="C:\Users\eldos\go\src\github.com\doxanocap\work\hitba\hitba-service-api\internal\processor\rest\controllers" />
+      <recent name="C:\Users\eldos\go\src\github.com\doxanocap\work\hitba\hitba-service-api\pkg\gin" />
       <recent name="C:\Users\eldos\go\src\github.com\doxanocap\work\Hitba.kz\hitba-service-api\internal\processor\rest\handler" />
       <recent name="C:\Users\eldos\go\src\github.com\doxanocap\work\Hitba.kz\hitba-service-api\internal\processor\rest" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="hitba-service-api" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <kind />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
+      <module name="hitba-service-api" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <kind />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">

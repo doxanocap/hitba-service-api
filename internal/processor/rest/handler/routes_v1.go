@@ -12,7 +12,7 @@ func (h *Handler) AddRoutesV1() {
 
 	serviceTariffs := v1.Group("tariffs")
 	{
-		serviceTariffs.POST("", h.serviceTariffs.Create)
+		serviceTariffs.POST("", h.services.CreateTariff)
 	}
 
 	users := v1.Group("users")

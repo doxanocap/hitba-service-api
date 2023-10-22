@@ -1,4 +1,4 @@
-package rest
+package processor
 
 import "github.com/gin-gonic/gin"
 

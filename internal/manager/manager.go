@@ -10,9 +10,9 @@ import (
 )
 
 type Manager struct {
+	cacheConn *redis.Conn
 	cfg       *model.Config
 	db        *gorm.DB
-	cacheConn *redis.Conn
 
 	service       interfaces.IService
 	serviceRunner sync.Once
@@ -28,10 +28,6 @@ func InitManager(cfg *model.Config) *Manager {
 	return &Manager{
 		cfg: cfg,
 	}
-}
-
-func (m *Manager) Cfg() *model.Config {
-	return m.cfg
 }
 
 func (m *Manager) Repository() interfaces.IRepository {
@@ -50,7 +46,7 @@ func (m *Manager) Service() interfaces.IService {
 
 func (m *Manager) Processor() interfaces.IProcessor {
 	m.processorRunner.Do(func() {
-		m.processor = InitProcessor(m)
+		m.processor = InitProcessor(m, m.cfg)
 	})
 	return m.processor
 }

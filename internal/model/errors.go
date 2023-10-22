@@ -13,6 +13,8 @@ type ErrorResponse struct {
 var (
 	HttpInternalServerError = errs.NewHttp(http.StatusInternalServerError, "internal server error")
 	HttpConflictError       = errs.NewHttp(http.StatusConflict, "conflict")
+	HttpBadRequest          = errs.NewHttp(http.StatusBadRequest, "bad request")
+	HttpUnauthorized        = errs.NewHttp(http.StatusUnauthorized, "unauthorized")
 )
 
 // custom errors for special cases
