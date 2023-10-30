@@ -44,6 +44,7 @@ func RunServer(lc fx.Lifecycle, server *httpServer.Server, manager *manager.Mana
 	lc.Append(fx.Hook{
 		OnStart: func(context.Context) error {
 			go func() {
+
 				if err := server.Run(manager.Processor().REST().Handler().Engine()); err != nil {
 					lg.Fatalf("failed to run REST: %v", err)
 				}

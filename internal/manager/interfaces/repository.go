@@ -12,7 +12,7 @@ type IRepository interface {
 }
 
 type IServicesRepository interface {
-	Create(ctx context.Context, service model.Service) error
+	Create(ctx context.Context, service *model.Service) error
 	GetAll(ctx context.Context) ([]model.Service, error)
 	GetByID(ctx context.Context, ID int64) (*model.Service, error)
 	GetByName(ctx context.Context, nameKey string) (*model.Service, error)
@@ -21,7 +21,7 @@ type IServicesRepository interface {
 }
 
 type IServiceTariffsRepository interface {
-	Create(ctx context.Context, serviceTariff model.ServiceTariff) error
+	Create(ctx context.Context, serviceTariff *model.ServiceTariff) error
 	GetByID(ctx context.Context, ID int64) (*model.ServiceTariff, error)
 	GetAllServices(ctx context.Context) ([]model.ServiceInfo, error)
 	UpdateByID(ctx context.Context, tariff *model.ServiceTariff, tariffID int64) error

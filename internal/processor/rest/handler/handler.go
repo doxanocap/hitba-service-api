@@ -2,28 +2,30 @@ package handler
 
 import (
 	"github.com/doxanocap/hitba-service-api/internal/manager/interfaces"
+	"github.com/doxanocap/hitba-service-api/internal/model"
 	"github.com/doxanocap/hitba-service-api/internal/processor/rest/controllers"
-	gin2 "github.com/doxanocap/hitba-service-api/pkg/gin"
+	"github.com/doxanocap/hitba-service-api/pkg/custom"
 	"github.com/gin-gonic/gin"
 	"sync"
 )
 
 type Handler struct {
-	services       *controllers.ServicesController
-	serviceTariffs *controllers.ServiceTariffsController
-	user           *controllers.UserController
+	services *controllers.ServicesController
+	user     *controllers.UserController
+
+	manager interfaces.IManager
+	config  *model.Config
 
 	engine       *gin.Engine
 	engineRunner sync.Once
-	manager      interfaces.IManager
 }
 
-func InitHandler(manager interfaces.IManager) *Handler {
+func InitHandler(manager interfaces.IManager, config *model.Config) *Handler {
 	newHandler := &Handler{
-		manager:        manager,
-		services:       controllers.InitServicesController(manager),
-		serviceTariffs: controllers.InitServiceTariffsController(manager),
-		user:           controllers.InitUserController(manager),
+		manager:  manager,
+		config:   config,
+		services: controllers.InitServicesController(manager, config),
+		user:     controllers.InitUserController(manager, config),
 	}
 
 	newHandler.InitRoutes()
@@ -42,7 +44,7 @@ func (h *Handler) InitRoutes() {
 
 func (h *Handler) Engine() *gin.Engine {
 	h.engineRunner.Do(func() {
-		h.engine = gin2.InitEngine(h.manager.Cfg().App.Environment)
+		h.engine = custom.InitEngine(h.config.App.Environment)
 	})
 	return h.engine
 }

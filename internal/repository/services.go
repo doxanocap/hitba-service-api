@@ -18,7 +18,7 @@ func InitServicesRepository(db *gorm.DB) *ServicesRepository {
 	}
 }
 
-func (repo *ServicesRepository) Create(ctx context.Context, service model.Service) error {
+func (repo *ServicesRepository) Create(ctx context.Context, service *model.Service) error {
 	service.UpdatedAt = time.Now()
 	err := repo.db.WithContext(ctx).
 		Create(&service).

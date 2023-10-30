@@ -1,0 +1,217 @@
+basePath: /
+definitions:
+  model.ErrorResponse:
+    properties:
+      message:
+        type: string
+    type: object
+  model.Service:
+    properties:
+      alias:
+        type: string
+      created_at:
+        type: string
+      description_key:
+        type: string
+      id:
+        type: integer
+      name_key:
+        type: string
+      price_per_unit:
+        type: integer
+      updated_at:
+        type: string
+    type: object
+  model.ServiceTariff:
+    properties:
+      auto_pay:
+        type: boolean
+      created_at:
+        type: string
+      guid:
+        type: string
+      id:
+        type: integer
+      is_active:
+        type: boolean
+      limit:
+        type: integer
+      limitation_type:
+        type: string
+      price:
+        type: integer
+      service_id:
+        type: integer
+      updated_at:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: API Server for Admin Application
+  title: service-api
+  version: "1.0"
+paths:
+  /v1/services:
+    get:
+      consumes:
+      - application/json
+      description: get all info about services
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/model.ErrorResponse'
+        default:
+          description: ""
+      summary: getAll
+      tags:
+      - services
+    post:
+      consumes:
+      - application/json
+      description: create service
+      parameters:
+      - description: service
+        in: body
+        name: service
+        required: true
+        schema:
+          $ref: '#/definitions/model.Service'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.ErrorResponse'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/model.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/model.ErrorResponse'
+        default:
+          description: ""
+      summary: createServices
+      tags:
+      - services
+  /v1/services/tariffs:
+    post:
+      consumes:
+      - application/json
+      description: create service_tariff using service id
+      parameters:
+      - description: service_tariff
+        in: body
+        name: tariff
+        required: true
+        schema:
+          $ref: '#/definitions/model.ServiceTariff'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/model.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/model.ErrorResponse'
+        default:
+          description: ""
+      summary: createTariff
+      tags:
+      - services
+    put:
+      consumes:
+      - application/json
+      description: update service_tariff using service_id and service_tariff_id
+      parameters:
+      - description: service_tariff_id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: service_tariff
+        in: body
+        name: tariff
+        required: true
+        schema:
+          $ref: '#/definitions/model.ServiceTariff'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/model.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/model.ErrorResponse'
+        default:
+          description: ""
+      summary: updateTariff
+      tags:
+      - services
+  /v1/users/:user_id:
+    post:
+      consumes:
+      - application/json
+      description: purchase service by service_tariff id
+      parameters:
+      - description: user_id
+        in: path
+        name: user_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/model.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/model.ErrorResponse'
+        default:
+          description: ""
+      summary: purchaseServiceByID
+      tags:
+      - users
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

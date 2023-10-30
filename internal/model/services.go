@@ -14,6 +14,7 @@ type Service struct {
 
 type ServiceTariff struct {
 	ID             int64     `json:"id" db:"id"`
+	Guid           string    `json:"guid" db:"guid"`
 	ServiceID      int64     `json:"service_id" db:"service_id"`
 	Limit          int       `json:"limit" db:"limit"`
 	LimitationType string    `json:"limitation_type" db:"limitation_type"`
@@ -39,6 +40,7 @@ type ServiceInfo struct {
 	NameKey        string `json:"name_key" db:"name_key"`
 	DescriptionKey string `json:"description_key" db:"description_key"`
 	Limit          int    `json:"limit" db:"limit"`
+	LimitationType string `json:"limitation_type" db:"limitation_type"`
 	Price          int    `json:"price" db:"price"`
 	AutoPay        bool   `json:"auto_pay" db:"auto_pay"`
 	IsActive       bool   `json:"is_active" db:"is_active"`

@@ -28,7 +28,7 @@ func InitProcessor(manager interfaces.IManager, config *model.Config) *Processor
 
 func (p *ProcessorManager) REST() interfaces.IRESTProcessor {
 	p.restProcessorRunner.Do(func() {
-		p.restProcessor = rest.Init(p.manager)
+		p.restProcessor = rest.Init(p.manager, p.config)
 	})
 	return p.restProcessor
 }

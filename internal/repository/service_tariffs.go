@@ -19,7 +19,7 @@ func InitServiceTariffsRepository(db *gorm.DB) *ServiceTariffsRepository {
 	}
 }
 
-func (repo *ServiceTariffsRepository) Create(ctx context.Context, tariff model.ServiceTariff) error {
+func (repo *ServiceTariffsRepository) Create(ctx context.Context, tariff *model.ServiceTariff) error {
 	tariff.UpdatedAt = time.Now()
 	err := repo.db.WithContext(ctx).
 		Create(&tariff).

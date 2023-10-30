@@ -20,5 +20,6 @@ var (
 // custom errors for special cases
 var (
 	ErrSuchServiceAlreadyExist = errs.NewHttp(http.StatusConflict, "service with such name already exists")
-	ErrServiceIdNotFound       = errs.NewHttp(http.StatusNotFound, "service with such id not found")
+	ErrServiceIDNotFound       = errs.NewHttp(http.StatusNotFound, "service with such id not found")
+	ErrTariffIDNotFound        = errs.NewHttp(http.StatusNotFound, "tariff with such id not foumd")
 )

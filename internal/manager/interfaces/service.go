@@ -12,10 +12,11 @@ type IService interface {
 
 // ToDo: rename Services
 type IServicesService interface {
-	Create(ctx context.Context, service model.Service) error
-	CreateTariff(ctx context.Context, tariff model.ServiceTariff) error
+	Create(ctx context.Context, service *model.Service) error
+	CreateTariff(ctx context.Context, tariff *model.ServiceTariff) error
 	GetAllServices(ctx context.Context) ([]model.ServiceInfo, error)
 	GetAll(ctx context.Context) ([]model.Service, error)
+	UpdateTariffByID(ctx context.Context, tariff *model.ServiceTariff, ID int64) error
 }
 
 type IUserService interface {

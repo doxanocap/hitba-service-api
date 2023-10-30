@@ -17,7 +17,7 @@ func InitServicesService(manager interfaces.IManager) *ServicesService {
 	}
 }
 
-func (s *ServicesService) Create(ctx context.Context, service model.Service) error {
+func (s *ServicesService) Create(ctx context.Context, service *model.Service) error {
 	result, err := s.manager.Repository().Services().GetByName(ctx, service.NameKey)
 	if err != nil {
 		return errs.Wrap("check if already exists", err)
@@ -34,14 +34,14 @@ func (s *ServicesService) Create(ctx context.Context, service model.Service) err
 	return nil
 }
 
-func (s *ServicesService) CreateTariff(ctx context.Context, tariff model.ServiceTariff) error {
+func (s *ServicesService) CreateTariff(ctx context.Context, tariff *model.ServiceTariff) error {
 	result, err := s.manager.Repository().Services().GetByID(ctx, tariff.ServiceID)
 	if err != nil {
-		return errs.Wrap("check service with such id exist", err)
+		return err
 	}
 
 	if result == nil {
-		return model.ErrServiceIdNotFound
+		return model.ErrServiceIDNotFound
 	}
 
 	err = s.manager.Repository().ServiceTariffs().Create(ctx, tariff)
@@ -57,4 +57,29 @@ func (s *ServicesService) GetAllServices(ctx context.Context) ([]model.ServiceIn
 
 func (s *ServicesService) GetAll(ctx context.Context) ([]model.Service, error) {
 	return s.manager.Repository().Services().GetAll(ctx)
+}
+
+func (s *ServicesService) UpdateTariffByID(ctx context.Context, tariff *model.ServiceTariff, ID int64) error {
+	prevTariff, err := s.manager.Repository().ServiceTariffs().GetByID(ctx, ID)
+	if err != nil {
+		return err
+	}
+	if prevTariff == nil {
+		return model.ErrTariffIDNotFound
+	}
+
+	result, err := s.manager.Repository().Services().GetByID(ctx, ID)
+	if err != nil {
+		return err
+	}
+
+	if result == nil {
+		return model.ErrServiceIDNotFound
+	}
+
+	err = s.manager.Repository().ServiceTariffs().UpdateByID(ctx, tariff, ID)
+	if err != nil {
+		return err
+	}
+	return nil
 }

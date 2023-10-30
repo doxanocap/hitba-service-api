@@ -5,43 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384b508f-c7cf-43e6-b025-528141bbfb4c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/internal/model/payment.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/processor/api/billing.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/custom/context.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/logger/zap.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6ef00e8f-940e-41ac-8ad7-202941e05e1e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6ef00e8f-940e-41ac-8ad7-202941e05e1e.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ba1d7dbc-7b15-4059-941b-d77abe6ade42.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ba1d7dbc-7b15-4059-941b-d77abe6ade42/storage_v2/_src_/database/service_api.kA0UjQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ba1d7dbc-7b15-4059-941b-d77abe6ade42/storage_v2/_src_/database/service_api.kA0UjQ/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ba1d7dbc-7b15-4059-941b-d77abe6ade42/storage_v2/_src_/database/service_api.kA0UjQ/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ba1d7dbc-7b15-4059-941b-d77abe6ade42/storage_v2/_src_/database/service_api.kA0UjQ/schema/public.abK9xQ.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/consts/cns.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/consts/cns.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/manager/interfaces/manager.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/manager/interfaces/manager.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/manager/interfaces/processor.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/manager/interfaces/processor.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/manager/interfaces/processor/rest.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/manager/interfaces/processor/rest/hanlder.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/manager/interfaces/processor/hanlder.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/manager/interfaces/processor/rest/middleware.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/manager/interfaces/processor/middleware.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/manager/interfaces/repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/manager/interfaces/repository.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/manager/interfaces/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/manager/interfaces/service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/manager/manager.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/manager/manager.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/manager/processor.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/manager/processor.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/manager/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/manager/service.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/model/errors.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/model/errors.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/model/services.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/model/services.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/processor/rest/controllers/services.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/processor/rest/controllers/services.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/processor/rest/controllers/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/processor/rest/controllers/user.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/processor/rest/handler/handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/processor/rest/handler/handler.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/processor/rest/handler/routes_v1.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/processor/rest/handler/routes_v1.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/processor/rest/handler/service_tarrifs.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/processor/rest/handler/services.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/processor/rest/controllers/services.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/processor/rest/handler/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/processor/rest/controllers/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/processor/rest/middlewares/middlewares.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/processor/rest/middlewares/middlewares.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/processor/rest/rest.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/processor/rest/rest.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/processor/rest/utils/gin.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/custom/gin.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/repository/purchased_services.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repository/purchased_services.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/repository/service_tariffs.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repository/service_tariffs.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/repository/services.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repository/services.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/service/service_tariffs.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/service/services.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/services.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/service/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/logger/zap.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/logger/zap.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +71,7 @@
     "git-widget-placeholder": "main",
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "C:/Users/eldos/go/src/github.com/doxanocap/projects/tasbih/tasbih-api",
+    "last_opened_file_path": "C:/Users/eldos",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm"
@@ -108,21 +96,36 @@
       <module name="hitba-service-api" />
       <working_directory value="$PROJECT_DIR$" />
       <go_parameters value="-i" />
-      <kind />
+      <kind value="PACKAGE" />
+      <package value="github.com/doxanocap/work/Hitba.kz/hitba-service-api" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build github.com/doxanocap/hitba-service-api" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="hitba-service-api" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="github.com/doxanocap/hitba-service-api" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/main.go" />
       <method v="2" />
     </configuration>
     <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
       <module name="hitba-service-api" />
       <working_directory value="$PROJECT_DIR$" />
       <go_parameters value="-i" />
-      <kind />
+      <kind value="DIRECTORY" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build github.com/doxanocap/hitba-service-api" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
@@ -130,5 +133,16 @@
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/internal/processor/rest/handler/handler.go</url>
+          <line>45</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

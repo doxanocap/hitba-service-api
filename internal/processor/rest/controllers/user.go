@@ -14,18 +14,31 @@ import (
 
 type UserController struct {
 	manager interfaces.IManager
-	cfg     *model.Config
+	config  *model.Config
 	log     *zap.Logger
 }
 
-func InitUserController(manager interfaces.IManager, cfg *model.Config) *UserController {
+func InitUserController(manager interfaces.IManager, config *model.Config) *UserController {
 	return &UserController{
 		manager: manager,
-		cfg:     cfg,
+		config:  config,
 		log:     logger.Log.Named("[CONTROLLER][USER]"),
 	}
 }
 
+// PurchaseServiceByID
+//	@Summary		purchaseServiceByID
+//	@Tags			users
+//	@Description	purchase service by service_tariff id
+//	@Accept			json
+//	@Produce		json
+//	@Param			user_id	path	string	true	"user_id"
+//	@Success		200
+//	@Failure		400	{object}	model.ErrorResponse
+//	@Failure		404	{object}	model.ErrorResponse
+//	@Failure		500	{object}	model.ErrorResponse
+//	@Failure		default
+//	@Router			/v1/users/:user_id [post]
 func (ctl *UserController) PurchaseServiceByID(ctx *gin.Context) {
 	log := ctl.log.Named("[PurchaseServiceByID]")
 
@@ -47,11 +60,12 @@ func (ctl *UserController) PurchaseServiceByID(ctx *gin.Context) {
 		log.Error(fmt.Sprintf("service.user.PurchaseService: %v", err))
 
 		code := errs.UnmarshalCode(err)
-		if code == http.StatusNotFound {
-			ctx.JSON(code, model.ErrServiceIdNotFound)
-			return
+		switch code {
+		case http.StatusNotFound:
+			ctx.JSON(code, model.ErrServiceIDNotFound)
+		default:
+			ctx.JSON(code, model.HttpInternalServerError)
 		}
-		ctx.JSON(http.StatusInternalServerError, model.HttpInternalServerError)
 		return
 	}
 	ctx.Status(http.StatusOK)
